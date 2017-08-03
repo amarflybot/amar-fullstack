@@ -24,8 +24,10 @@ export class PersonController {
       enableSorting: true,
       enableFilter: true,
       pagination: true,
-      paginationPageSize: 20,
-      onGridReady: function(params) {
+      paginationAutoPageSize: true,
+      animateRows: true,
+      getRowNodeId: function(data) { return data.id; },
+      onGridReady: (params) => {
         params.api.sizeColumnsToFit();
       }
     };
@@ -47,7 +49,7 @@ export class PersonController {
       .then( response => {
           var data = [];
           angular.forEach(response, (person) => {
-            data.push({firstName: person.firstName, lastName: person.lastName, address: person.address, dateOfBirth: person.dateOfBirth});
+            data.push({id: person.id, firstName: person.firstName, lastName: person.lastName, address: person.address, dateOfBirth: person.dateOfBirth});
           });
         this.gridOptions.api.setRowData(data);
         });
