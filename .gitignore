@@ -9,3 +9,4 @@ dist/
 src/main/resources/static/
 src/main/resources/templates/
 target/
+/amar-service.iml
